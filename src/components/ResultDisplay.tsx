@@ -19,13 +19,13 @@ export default function ResultDisplay({ result }: ResultDisplayProps) {
 
   const generateShareText = () => {
     let text = `⚖️ *تقرير توزيع التركة الشرعية - تطبيق الإرث الميسّر* ⚖️\n\n`;
-    text += `💵 *التركة الإجمالية:* ${result.totalEstate.toLocaleString()} ريال\n`;
-    text += `🛡️ *التركة الصافية:* ${netEstate.toLocaleString()} ريال\n`;
+    text += `💵 *التركة الإجمالية:* ${result.totalEstate.toLocaleString()} جنيه\n`;
+    text += `🛡️ *التركة الصافية:* ${netEstate.toLocaleString()} جنيه\n`;
     text += `🌀 *أصل المسألة:* ${finalBase} سهام\n\n`;
     
     text += `📊 *تقسيم الورثة:* \n`;
     inheritingHeirs.forEach((h) => {
-      text += `• *${h.name}*: ${h.shareFractionText} (نسبة: ${Math.round(h.shareDecimal * 1000) / 10}%) | الحصة: ${h.shareValue.toLocaleString()} ريال\n`;
+      text += `• *${h.name}*: ${h.shareFractionText} (نسبة: ${Math.round(h.shareDecimal * 1000) / 10}%) | الحصة: ${h.shareValue.toLocaleString()} جنيه\n`;
     });
     
     if (blockedHeirs.length > 0) {
@@ -77,8 +77,8 @@ export default function ResultDisplay({ result }: ResultDisplayProps) {
         <p className="text-brand-dark/70 text-sm">صادر عن تطبيق "الإرث الميسّر" لحساب المواريث</p>
         <div className="flex justify-center gap-6 text-xs text-brand-dark/50 mt-4">
           <span>تاريخ التقرير: {new Date().toLocaleDateString('ar-EG')}</span>
-          <span>التركة الإجمالية: {result.totalEstate.toLocaleString()} ريال</span>
-          <span>التركة الصافية: {result.netEstate.toLocaleString()} ريال</span>
+          <span>التركة الإجمالية: {result.totalEstate.toLocaleString()} جنيه</span>
+          <span>التركة الصافية: {result.netEstate.toLocaleString()} جنيه</span>
         </div>
       </div>
 
@@ -89,9 +89,9 @@ export default function ResultDisplay({ result }: ResultDisplayProps) {
           <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)', backgroundSize: '12px 12px' }}></div>
           <div className="absolute top-0 left-0 w-1.5 h-full bg-brand-gold"></div>
           <p className="text-xs text-brand-beige/80 font-bold uppercase tracking-wider mb-1">التركة الصافية الموزعة</p>
-          <p className="font-mono text-2xl font-bold text-brand-gold">{netEstate.toLocaleString()} ريال</p>
+          <p className="font-mono text-2xl font-bold text-brand-gold">{netEstate.toLocaleString()} جنيه</p>
           <p className="text-[10px] text-brand-beige/60 mt-2 font-sans">
-            بعد استقطاع { (result.totalEstate - netEstate).toLocaleString() } ريال ديون/وصايا
+            بعد استقطاع { (result.totalEstate - netEstate).toLocaleString() } جنيه ديون/وصايا
           </p>
         </div>
 
@@ -264,7 +264,7 @@ export default function ResultDisplay({ result }: ResultDisplayProps) {
                     </h4>
                   </div>
                   <div className="text-left font-mono">
-                    <p className="text-xs md:text-sm font-bold text-brand-green">{heir.shareValue.toLocaleString()} ريال</p>
+                    <p className="text-xs md:text-sm font-bold text-brand-green">{heir.shareValue.toLocaleString()} جنيه</p>
                     <p className="text-[9px] text-gray-400 mt-0.5">النصيب الإجمالي للجهة</p>
                   </div>
                 </div>
@@ -293,7 +293,7 @@ export default function ResultDisplay({ result }: ResultDisplayProps) {
                     <div className="col-span-2 md:col-span-1">
                       <span className="text-gray-400 block mb-0.5">نصيب الفرد الواحد:</span>
                       <span className="font-mono font-bold text-brand-gold">
-                        {heir.individualShareValue.toLocaleString()} ريال
+                        {heir.individualShareValue.toLocaleString()} جنيه
                       </span>
                     </div>
                   )}
