@@ -225,11 +225,11 @@ export default function ResultDisplay({ result }: ResultDisplayProps) {
 
         {/* Detailed Heirs List */}
         <div className="lg:col-span-7 bg-white rounded-2xl border border-brand-border shadow-xs p-5 space-y-4">
-          <div className="flex items-center justify-between border-b border-brand-light-beige pb-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-brand-light-beige pb-3 gap-y-2.5">
             <h3 className="font-serif text-sm md:text-base font-bold text-brand-dark border-r-4 border-brand-green pr-3">جدول توزيع الحصص والأنصبة</h3>
             
             {/* Quick Action Buttons */}
-            <div className="flex gap-2 print:hidden">
+            <div className="flex flex-wrap gap-2 print:hidden">
               <button
                 onClick={() => setShowShareModal(true)}
                 className="px-3.5 py-1.5 bg-brand-light-green/60 text-brand-green font-bold hover:bg-brand-light-green/90 rounded-xl text-xs flex items-center gap-1.5 transition-all cursor-pointer shadow-3xs"

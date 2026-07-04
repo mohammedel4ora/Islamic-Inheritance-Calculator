@@ -6,9 +6,10 @@ interface HeirSelectorProps {
   gender: 'male' | 'female';
   heirs: HeirInput;
   setHeirs: (updater: (prev: HeirInput) => HeirInput) => void;
+  step?: number;
 }
 
-export default function HeirSelector({ gender, heirs, setHeirs }: HeirSelectorProps) {
+export default function HeirSelector({ gender, heirs, setHeirs, step }: HeirSelectorProps) {
   const [subTab, setSubTab] = useState<'primary' | 'extended'>('primary');
   
   const updateKey = <K extends keyof HeirInput>(key: K, value: HeirInput[K]) => {
@@ -123,6 +124,131 @@ export default function HeirSelector({ gender, heirs, setHeirs }: HeirSelectorPr
     heirs.uterineSistersCount +
     heirs.fullUnclesCount +
     heirs.consanguineUnclesCount;
+
+  if (step === 2) {
+    return (
+      <div className="bg-white rounded-2xl border border-brand-border shadow-xs p-5 md:p-6 space-y-5 animate-fade-in">
+        <div className="flex justify-between items-center border-b border-brand-light-beige pb-3">
+          <div className="flex items-center gap-2">
+            <Users className="w-5 h-5 text-brand-green" />
+            <h2 className="font-serif text-base md:text-lg font-bold border-r-4 border-brand-green pr-3 text-brand-dark">
+              الخطوة 2: الزوجية والفروع المباشرة
+            </h2>
+          </div>
+          <span className="text-xs text-brand-gold font-bold">الخطوة 2 من 5</span>
+        </div>
+
+        <p className="text-xs text-brand-dark/60 leading-relaxed -mt-1">
+          الزوج أو الزوجات والأولاد المباشرون هم ركيزة المسألة الإرثية ولهم تأثير حجب مباشر على بقية الورثة.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+          {gender === 'female' ? (
+            <ToggleInput label="الزوج" icon="💍" itemKey="husband" />
+          ) : (
+            <CountInput label="الزوجات" icon="💍" itemKey="wivesCount" max={4} />
+          )}
+          <CountInput label="الأبناء (الذكور)" icon="👦" itemKey="sonsCount" />
+          <CountInput label="البنات (الإناث)" icon="👧" itemKey="daughtersCount" />
+        </div>
+      </div>
+    );
+  }
+
+  if (step === 3) {
+    return (
+      <div className="bg-white rounded-2xl border border-brand-border shadow-xs p-5 md:p-6 space-y-5 animate-fade-in">
+        <div className="flex justify-between items-center border-b border-brand-light-beige pb-3">
+          <div className="flex items-center gap-2">
+            <Users className="w-5 h-5 text-brand-green" />
+            <h2 className="font-serif text-base md:text-lg font-bold border-r-4 border-brand-green pr-3 text-brand-dark">
+              الخطوة 3: الأصول والأحفاد
+            </h2>
+          </div>
+          <span className="text-xs text-brand-gold font-bold">الخطوة 3 من 5</span>
+        </div>
+
+        <p className="text-xs text-brand-dark/60 leading-relaxed -mt-1">
+          الأبوين والأجداد من الجهتين، وكذلك فروع الأبناء (أبناء وبنات الابن) الذين يرثون في حال غياب الفرع الوارث المباشر.
+        </p>
+
+        <div className="space-y-4 pt-2">
+          <div className="space-y-2">
+            <h4 className="text-xs font-bold text-brand-green/80">الأصول المباشرة (الأبوين)</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <ToggleInput label="الأب" icon="👴" itemKey="father" />
+              <ToggleInput label="الأم" icon="👵" itemKey="mother" />
+            </div>
+          </div>
+
+          <div className="space-y-2 pt-1">
+            <h4 className="text-xs font-bold text-brand-green/80">الأجداد والجدات</h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <ToggleInput label="الجد لأب (أب الأب)" icon="🧓" itemKey="grandfather" />
+              <ToggleInput label="الجدة لأم (أم الأم)" icon="👵" itemKey="grandmotherMotherSide" />
+              <ToggleInput label="الجدة لأب (أم الأب)" icon="👵" itemKey="grandmotherFatherSide" />
+            </div>
+          </div>
+
+          <div className="space-y-2 pt-1">
+            <h4 className="text-xs font-bold text-brand-green/80">فروع الابن (الأحفاد)</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <CountInput label="أبناء الابن (الذكور)" icon="👶" itemKey="sonsSonsCount" />
+              <CountInput label="بنات الابن (الإناث)" icon="🍼" itemKey="sonsDaughtersCount" />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (step === 4) {
+    return (
+      <div className="bg-white rounded-2xl border border-brand-border shadow-xs p-5 md:p-6 space-y-5 animate-fade-in">
+        <div className="flex justify-between items-center border-b border-brand-light-beige pb-3">
+          <div className="flex items-center gap-2">
+            <Users className="w-5 h-5 text-brand-green" />
+            <h2 className="font-serif text-base md:text-lg font-bold border-r-4 border-brand-green pr-3 text-brand-dark">
+              الخطوة 4: الحواشي والأعمام
+            </h2>
+          </div>
+          <span className="text-xs text-brand-gold font-bold">الخطوة 4 من 5</span>
+        </div>
+
+        <p className="text-xs text-brand-dark/60 leading-relaxed -mt-1">
+          الإخوة والأخوات بمختلف درجات قرابتهم (أشقاء، لأب، لأم)، بالإضافة إلى الأعمام الأشقاء أو لأب.
+        </p>
+
+        <div className="space-y-4 pt-2">
+          <div className="space-y-2">
+            <h4 className="text-xs font-bold text-brand-green/80">الإخوة والأخوات الأشقاء ولأب</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <CountInput label="أخوة أشقاء" icon="👬" itemKey="fullBrothersCount" />
+              <CountInput label="أخوات شقيقات" icon="👭" itemKey="fullSistersCount" />
+              <CountInput label="أخوة لأب" icon="👨‍👦" itemKey="consanguineBrothersCount" />
+              <CountInput label="أخوات لأب" icon="👩‍👦" itemKey="consanguineSistersCount" />
+            </div>
+          </div>
+
+          <div className="space-y-2 pt-1">
+            <h4 className="text-xs font-bold text-brand-green/80">الإخوة للأم</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <CountInput label="أخوة لأم (ذكور)" icon="🧑‍🤝‍🧑" itemKey="uterineBrothersCount" />
+              <CountInput label="أخوات لأم (إناث)" icon="🧑‍🤝‍🧑" itemKey="uterineSistersCount" />
+            </div>
+          </div>
+
+          <div className="space-y-2 pt-1">
+            <h4 className="text-xs font-bold text-brand-green/80">الأعمام وعصبات الحواشي</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <CountInput label="أعمام أشقاء" icon="👨‍🦳" itemKey="fullUnclesCount" />
+              <CountInput label="أعمام لأب" icon="👨‍🦳" itemKey="consanguineUnclesCount" />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white rounded-2xl border border-brand-border shadow-xs p-5 md:p-6 space-y-6">
