@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ar" dir="rtl" class="h-full bg-slate-50">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>حاسبة المواريث الشرعية - الإرث الميسر</title>
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#115e59" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-icon" href="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=192&h=192" />
+    
+    <!-- Google Fonts: Cairo & Amiri -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body class="h-full font-sans antialiased text-slate-800">
+    <div id="root" class="min-h-full"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('Service Worker registered! Scope:', reg.scope))
+            .catch(err => console.log('Service Worker registration failed:', err));
+        });
+      }
+    </script>
+  </body>
+</html>
+

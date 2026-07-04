@@ -1,0 +1,6 @@
+{
+  "name": "Islamic Inheritance Calculator",
+  "description": "حاسبة مواريث إلكترونية دقيقة لحساب الأنصبة والسهام وفق الشريعة الإسلامية مع توضيح الحجب والفرض والتعصيب والرد والعول.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

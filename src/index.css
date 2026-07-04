@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Cairo", system-ui, -apple-system, sans-serif;
+  --font-serif: "Amiri", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  
+  --color-brand-green: #064E3B;
+  --color-brand-gold: #D4AF37;
+  --color-brand-gold-dark: #c4a132;
+  --color-brand-beige: #F9F7F2;
+  --color-brand-dark: #1B2A24;
+  --color-brand-border: #E5E1D8;
+  --color-brand-light-green: #F0F7F4;
+  --color-brand-light-beige: #F3F1ED;
+}
+
+/* Custom global animations or scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Custom animations for steps */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
