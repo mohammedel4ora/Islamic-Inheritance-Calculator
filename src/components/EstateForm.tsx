@@ -89,9 +89,9 @@ export default function EstateForm({
               placeholder="0"
               value={totalEstate}
               onChange={(e) => setTotalEstate(e.target.value)}
-              className="w-full bg-brand-light-beige p-3 rounded-xl text-left font-mono font-bold text-brand-green border-none focus:ring-2 focus:ring-brand-gold outline-hidden text-sm"
+              className="w-full bg-brand-light-beige p-3 pr-4 pl-12 rounded-xl text-right font-mono font-bold text-brand-green border-none focus:ring-2 focus:ring-brand-gold outline-hidden text-sm"
             />
-            <span className="absolute left-3 top-3 text-gray-400 text-xs">ريال</span>
+            <span className="absolute left-3 top-3.5 text-gray-400 text-xs font-bold">ريال</span>
           </div>
         </div>
 
@@ -109,9 +109,9 @@ export default function EstateForm({
                 placeholder="0"
                 value={debts}
                 onChange={(e) => setDebts(e.target.value)}
-                className="w-full bg-brand-light-beige p-3 rounded-xl text-left font-mono font-bold text-brand-dark/80 border-none focus:ring-2 focus:ring-brand-gold outline-hidden text-sm"
+                className="w-full bg-brand-light-beige p-3 pr-4 pl-12 rounded-xl text-right font-mono font-bold text-brand-dark/80 border-none focus:ring-2 focus:ring-brand-gold outline-hidden text-sm"
               />
-              <span className="absolute left-3 top-3 text-gray-400 text-xs">ريال</span>
+              <span className="absolute left-3 top-3.5 text-gray-400 text-xs font-bold">ريال</span>
             </div>
           </div>
 
@@ -127,9 +127,9 @@ export default function EstateForm({
                 placeholder="0"
                 value={willExpenses}
                 onChange={(e) => setWillExpenses(e.target.value)}
-                className="w-full bg-brand-light-beige p-3 rounded-xl text-left font-mono font-bold text-brand-dark/80 border-none focus:ring-2 focus:ring-brand-gold outline-hidden text-sm"
+                className="w-full bg-brand-light-beige p-3 pr-4 pl-12 rounded-xl text-right font-mono font-bold text-brand-dark/80 border-none focus:ring-2 focus:ring-brand-gold outline-hidden text-sm"
               />
-              <span className="absolute left-3 top-3 text-gray-400 text-xs">ريال</span>
+              <span className="absolute left-3 top-3.5 text-gray-400 text-xs font-bold">ريال</span>
             </div>
             {willsNum > 0 && willsNum > (estateNum / 3) && (
               <p className="text-[10px] text-amber-600 mt-1 leading-normal">

@@ -314,7 +314,7 @@ export default function App() {
                         : 'bg-white hover:bg-brand-light-beige border border-brand-border text-brand-dark cursor-pointer shadow-3xs'
                     }`}
                   >
-                    <span>&larr;</span>
+                    <span>&rarr;</span>
                     <span>الخطوة السابقة</span>
                   </button>
 
@@ -324,7 +324,7 @@ export default function App() {
                       className="px-6 py-2.5 bg-brand-green hover:bg-brand-green/95 text-white text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shadow-md"
                     >
                       <span>الخطوة التالية</span>
-                      <span>&rarr;</span>
+                      <span>&larr;</span>
                     </button>
                   ) : (
                     <button
